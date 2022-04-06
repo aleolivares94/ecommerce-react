@@ -16,7 +16,7 @@ function App() {
         <NavBar />
       </Router>
 
-      <ItemListContainer />
+      <ItemListContainer greeting={"Venta De Ropa Deportiva"} />
     </div>
   );
 }
