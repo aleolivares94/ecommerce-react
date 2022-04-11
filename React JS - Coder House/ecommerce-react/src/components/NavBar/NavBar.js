@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import CartWidget from "./CartWidget/CartWidget";
+import { Link, NavLink } from "react-router-dom";
+import CartWidget from "../CartWidget/CartWidget";
+import { useState, useEffect } from "react";
+import { getCategories } from "../asyncmock";
 
-const navbar = () => {
+const NavBar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-info">
@@ -52,4 +54,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default NavBar;
