@@ -12,13 +12,17 @@ const Item = ({ id, name, img, price }) => {
       <header className="Header">
         <h2 className="ItemHeader">{name}</h2>
       </header>
+      <picture>
+        <img src={img} alt={name} className="ItemImg" />
+      </picture>
       <section>
-        <picture>
-          <img src={img} alt={name} />
-        </picture>
-        <h3>{name}</h3>
-        <Link to={`/detail/${id}`}>Ver detalle</Link>
+        <p className="Info">Precio: ${price}</p>
       </section>
+      <footer className="ItemFooter">
+        <Link to={`/detail/${id}`} className="Option">
+          Ver detalle
+        </Link>
+      </footer>
     </article>
   );
 };
