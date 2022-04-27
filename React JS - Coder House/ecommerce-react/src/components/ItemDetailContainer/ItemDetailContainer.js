@@ -1,6 +1,5 @@
 import "./ItemDetailContainer.css";
 import { useState, useEffect } from "react";
-import { getProductsById } from "../asyncmock";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import { firestoreDb } from "../../service/firebase";
@@ -13,23 +12,21 @@ const ItemDetailContainer = ({ setCart, cart }) => {
   const { productId } = useParams();
 
   useEffect(() => {
-    // getProductsById(productId).then(item => {
-    //     setProduct(item)
-    // }).catch(err  => {
-    //     console.log(err)
-    // }).finally(() => {
-    //     setLoading(false)
-    // })
+    setLoading(true);
 
-    getDoc(doc(firestoreDb, "products", productId)).then((response) => {
-      console.log(response);
-      const product = { id: response.id, ...response.data() };
-      setProduct(product);
-    });
+    const docRef = doc(firestoreDb, "products", productId);
 
-    return () => {
-      setProduct();
-    };
+    getDoc(docRef)
+      .then((response) => {
+        const product = { id: response.id, ...response.data() };
+        setProduct(product);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [productId]);
 
   if (loading) {
