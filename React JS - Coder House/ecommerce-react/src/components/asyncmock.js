@@ -26,12 +26,39 @@ const products = [
     stock: 15,
     description: "Remera de River",
   },
+  {
+    id: "4",
+    name: "Argentina",
+    price: 7000,
+    category: "argentina",
+    img: "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/6cd93f7e2b38428ba2f1ae61014291c7_9366/camiseta-titular-seleccion-argentina-messi-10.jpg",
+    stock: 9,
+    description: "argentina",
+  },
+  {
+    id: "5",
+    name: "Boca",
+    price: 12000,
+    category: "boca",
+    img: "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/6cd93f7e2b38428ba2f1ae61014291c7_9366/camiseta-titular-seleccion-argentina-messi-10.jpg",
+    stock: 6,
+    description: "boca",
+  },
+  {
+    id: "6",
+    name: "River",
+    price: 9000,
+    category: "river",
+    img: "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/6cd93f7e2b38428ba2f1ae61014291c7_9366/camiseta-titular-seleccion-argentina-messi-10.jpg",
+    stock: 8,
+    description: "river",
+  },
 ];
 
 const categories = [
-  { id: "argentina", description: "Remeras de Argentina" },
-  { id: "boca", description: "Remeras de Boca" },
-  { id: "river", description: "Remeras de River" },
+  { id: "argentina", description: "Argentina" },
+  { id: "boca", description: "Boca" },
+  { id: "river", description: "River" },
 ];
 
 export const getCategories = () => {
@@ -42,22 +69,22 @@ export const getCategories = () => {
   });
 };
 
-export const getProducts = (categoryID) => {
+export const getProducts = (categoryId) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(
-        categoryID
-          ? products.filter((prod) => prod.category === categoryID)
+        categoryId
+          ? products.filter((prod) => prod.category === categoryId)
           : products
       );
-    }, 2000);
+    }, 3000);
   });
 };
 
 export const getProductsById = (id) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(products.find((prod) => prod.id == id));
-    }, 2000);
+      resolve(products.find((prod) => prod.id === id));
+    }, 500);
   });
 };
